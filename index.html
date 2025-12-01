@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Конкурс Dyadya Sandwich</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #442b19;        /* основной тёмно‑коричневый цвет (как в логотипе) */
+            --primary-hover: #3a2214;  /* тёмный оттенок для наведения */
+            --background: #442b19;     /* светлый бежевый фон, близкий к фону логотипа */
+            --card-bg: #f5f0cc;        /* карточка чуть светлее фона */
+            --text-color: #442b10;     /* основной цвет текста */
+            --label-color: #5e3d25;    /* цвет подписей */
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 32px 36px;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 140px;
+            height: auto;
+        }
+        .card h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .instructions {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .instructions ol {
+            margin: 0 0 0 20px;
+            padding: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        label {
+            font-weight: 600;
+            color: var(--label-color);
+            margin-bottom: 6px;
+        }
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 1rem;
+            border: 1px solid #c8bfa8;
+            border-radius: 8px;
+            background-color: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(68, 43, 25, 0.2);
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        button[type="submit"]:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+        .footer-note {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #77664a;
+        }
+        /* Адаптация для экранов шириной до 480px */
+        @media (max-width: 480px) {
+            .card {
+                padding: 24px 20px;
+            }
+            .logo {
+                width: 100px;
+                margin-bottom: 16px;
+            }
+            .card h1 {
+                font-size: 1.6rem;
+                margin-bottom: 14px;
+            }
+            .instructions {
+                font-size: 0.9rem;
+                margin-bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <!-- Логотип сверху: сохраните файл логотипа под именем logo.png в той же папке -->
+    <img src="logo.png" alt="Логотип Дядя Сэндвич" class="logo" />
+    <h1>Участвуйте в конкурсе!</h1>
+    <div class="instructions">
+        <p><strong>Следуйте инструкции:</strong></p>
+        <ol>
+            <li>Введите номер телефона.</li>
+            <li>Загрузите фото продукции, на которой видна дата производства.</li>
+            <li>Нажмите «Отправить».</li>
+            <li>Победитель объявляется каждую неделю в Instagram <strong>@dyadya_sandwich</strong>.</li>
+        </ol>
+    </div>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="phone">Номер телефона:</label>
+        <input type="text" id="phone" name="phone" pattern="[0-9+\-\s]{6,20}" required placeholder="+7 (___) ___‑__‑__" />
+
+        <label for="fileToUpload">Фото продукции:</label>
+        <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*" required />
+
+        <button type="submit" name="submit">Отправить</button>
+    </form>
+    <div class="footer-note">Спасибо за участие! Следите за результатами.</div>
+</div>
+</body>
+</html>
